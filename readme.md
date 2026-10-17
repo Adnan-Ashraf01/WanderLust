@@ -1,0 +1,1 @@
+A full-stack web application for exploring, creating, and managing travel stays, built as a real-world development project.
