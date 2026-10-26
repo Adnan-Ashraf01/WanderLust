@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Upload Listing Image</label>
-                    <input type="file" name="listing[image]" class="form-control" >
+                    <label for="image" class="form-label">Upload Listing Image <br> Max 1 MB</label>
+                    <input type="file" name="listing[image]" class="form-control" required>
                
                 </div>
                 <div class="row">
@@ -42,7 +42,7 @@
 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" name="listing[location]" placeholder="Jaiput, Rajasthan" class="form-control" required>
+                    <input type="text" name="listing[location]" placeholder="Jaipur, Rajasthan" class="form-control" required>
                      <div class="invalid-feedback">
                         Location should be valid
                     </div>

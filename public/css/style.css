@@ -117,3 +117,16 @@ body {
     padding-left: 0;
     padding-right: 0;
 }
+.edit-img {
+    height: 150px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Map*/
+#map{
+    height: 400px;
+    width: 80vh;
+}
