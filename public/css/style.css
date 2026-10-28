@@ -1,16 +1,38 @@
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: clip;
+}
+
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
+    overflow-x: clip;
 }
 
 .container {
     flex: 1;
+    min-width: 0;
 }
 
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
-    height: 5rem;
+    min-height: 5rem;
+    height: auto;
     background-color: white;
 }
 
@@ -22,6 +44,10 @@ body {
 .nav-link {
     color: #222222 !important;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 .f-info-links a {
     text-decoration: none;
@@ -39,7 +65,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .f-info-socials i {
@@ -47,47 +72,52 @@ body {
     margin-right: 1rem;
 }
 
-
-
 .f-info {
     text-align: center;
-    height: 8rem;
+    min-height: 8rem;
+    height: auto;
+    padding: 1rem;
     background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-evenly;
-
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Card*/
+/* =========================
+   LISTING CARDS
+========================= */
+
 .listing-card {
     border: none !important;
     margin-bottom: 2rem;
+    min-width: 0;
 }
 
 .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
+    max-width: 100%;
     object-fit: cover !important;
 }
 
 .card-body {
     padding: 0 !important;
+    min-width: 0;
 }
 
 .card-text p {
     font-weight: 400 !important;
-
 }
 
 .listing-link {
     text-decoration: none;
+    min-width: 0;
 }
 
 .card-img-overlay {
     opacity: 0;
-
 }
 
 .card-img-overlay:hover {
@@ -95,38 +125,288 @@ body {
     background-color: white;
 }
 
-.add-btn {
-    background-color: #fe424d !important;
-    border: none !important;
-}
-
+.add-btn,
 .edit-btn {
     background-color: #fe424d !important;
     border: none !important;
+    color: #fff !important;
 }
 
-
-.show-img{
-  height: 30vh;
-
+.show-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 30vh;
+    object-fit: cover;
 }
-.btns{
-    display: flex;
-}
-.show-card{
+
+.show-card {
     padding-left: 0;
     padding-right: 0;
+    min-width: 0;
 }
+
 .edit-img {
     height: 150px;
     width: 200px;
+    max-width: 100%;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
 }
 
-/* Map*/
-#map{
+/* Edit and Delete buttons */
+
+.btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btns form {
+    margin: 0;
+}
+
+/* =========================
+   MAP
+========================= */
+
+#map {
+    display: block;
     height: 400px;
-    width: 80vh;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
+   CATEGORY FILTERS
+========================= */
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.filter {
+    text-align: center;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+    flex: 0 0 auto;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size: 0.8rem;
+}
+
+/* =========================
+   TAX TOGGLE
+========================= */
+
+.tax-info {
+    display: none;
+}
+
+.tax-toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    min-height: 2.5rem;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.search-btn {
+    background-color: #fe424d !important;
+    color: #fff !important;
+    border: 1px solid #fe424d !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    flex-shrink: 0;
+}
+
+.search-btn:hover,
+.search-btn:focus {
+    background-color: #e63946 !important;
+    color: #fff !important;
+    border-color: #e63946 !important;
+}
+
+.search-btn i {
+    display: inline;
+    margin-right: 0;
+}
+
+.search-input {
+    border-radius: 25px !important;
+    padding: 0.5rem 1.25rem;
+    min-width: 0;
+}
+
+/* =========================
+   REVIEW CARDS AND STARS
+========================= */
+
+.review-card {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.review-card .card-body {
+    min-width: 0;
+}
+
+/* Keep rating stars within the card */
+.review-card .starability-result {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 767px) {
+
+    /* Navbar */
+
+    .navbar {
+        height: auto;
+        min-height: 4.5rem;
+    }
+
+    .navbar > .container-fluid {
+        flex-wrap: wrap;
+    }
+
+    .navbar-collapse {
+        flex-basis: 100%;
+        width: 100%;
+        padding: 0.75rem 0;
+        background-color: #fff;
+    }
+
+    .navbar-collapse > .navbar-nav {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .navbar-collapse > .navbar-nav > .nav-link {
+        padding: 0.6rem 0;
+    }
+
+    /* Search */
+
+    .navbar-collapse form[role="search"] {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .navbar-collapse form[role="search"] .search-input {
+        flex: 1 1 auto;
+        width: 0;
+        min-width: 0;
+        padding: 0.5rem 0.75rem;
+        margin: 0 !important;
+    }
+
+    .navbar-collapse form[role="search"] .search-btn {
+        padding: 0.5rem 0.85rem;
+        gap: 0.35rem;
+    }
+
+    /* Categories */
+
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
+        height: auto;
+        margin: 1rem 0;
+    }
+
+    .filter {
+        margin: 0;
+        flex: 0 0 auto;
+    }
+
+    .filter p {
+        font-size: 0.75rem;
+    }
+
+    /* Tax toggle */
+
+    .tax-toggle {
+        margin: 1rem 0;
+        max-width: 100%;
+        font-size: 0.8rem;
+    }
+
+    /* Listing images */
+
+    .show-img {
+        height: auto;
+        max-height: 350px;
+    }
+
+    /* Map */
+
+    #map {
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Edit and Delete */
+
+    .btns {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    /* Reviews */
+
+    .review-card {
+        width: 100%;
+        flex: 0 0 100%;
+        margin-left: 0 !important;
+    }
+
+    /* Footer */
+
+    .f-info {
+        gap: 0.75rem;
+        padding: 1rem 0.5rem;
+    }
 }

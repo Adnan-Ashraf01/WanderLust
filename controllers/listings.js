@@ -52,19 +52,49 @@ module.exports.renderEditForm = async (req, res) => {
     originalImage = originalImage.replace("/upload", "/upload/w_250");
     res.render("listings/edit.ejs", { listing, originalImage });
 };
-module.exports.updateListing = async (req, res) => {
 
+module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-    if (req.file) {
-        let url = req.file.path;
-        let filename = req.file.filename;
-        listing.image = { url, filename };
-        await listing.save();
+
+    let listing = await Listing.findById(id);
+
+    if (!listing) {
+        req.flash("error", "Listing you requested for does not exist!");
+        return res.redirect("/listings");
     }
-    req.flash("success", " Listing Updated");
+
+    // Update location and get its coordinates from Mapbox
+    if (req.body.listing.location) {
+        let response = await geocodingClient.forwardGeocode({
+            query: req.body.listing.location,
+            limit: 1
+        }).send();
+
+        if (response.body.features.length > 0) {
+            listing.geometry = response.body.features[0].geometry;
+        } else {
+            req.flash("error", "Location not found. Please enter a valid location.");
+            return res.redirect(`/listings/${id}/edit`);
+        }
+    }
+
+    // Update other listing details
+    Object.assign(listing, req.body.listing);
+
+    // Update image only if a new image was uploaded
+    if (req.file) {
+        listing.image = {
+            url: req.file.path,
+            filename: req.file.filename
+        };
+    }
+
+    await listing.save();
+
+    req.flash("success", "Listing Updated");
     res.redirect(`/listings/${id}`);
 };
+
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
