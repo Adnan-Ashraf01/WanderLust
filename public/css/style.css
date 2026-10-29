@@ -1,4 +1,3 @@
-
 /* =========================
    GLOBAL STYLES
 ========================= */
@@ -24,6 +23,9 @@ body {
 .container {
     flex: 1;
     min-width: 0;
+    width: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 }
 
 /* =========================
@@ -76,7 +78,7 @@ body {
     text-align: center;
     min-height: 8rem;
     height: auto;
-    padding: 1rem;
+    padding: 1.25rem;
     background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
@@ -96,6 +98,7 @@ body {
 }
 
 .card-img-top {
+    display: block;
     border-radius: 1rem !important;
     width: 100% !important;
     max-width: 100%;
@@ -103,8 +106,8 @@ body {
 }
 
 .card-body {
-    padding: 0 !important;
     min-width: 0;
+    padding: 0 !important;
 }
 
 .card-text p {
@@ -132,18 +135,35 @@ body {
     color: #fff !important;
 }
 
+/* =========================
+   LISTING DETAILS PAGE
+========================= */
+
+.show-card {
+    min-width: 0;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Image on the listing details page */
 .show-img {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: 30vh;
+    height: 320px;
     object-fit: cover;
+    border-radius: 1rem;
 }
 
-.show-card {
-    padding-left: 0;
-    padding-right: 0;
-    min-width: 0;
+/* Add breathing room between the image and listing details */
+.show-card .card-body {
+    padding: 1rem 0.25rem !important;
+}
+
+.show-card .card-text {
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 .edit-img {
@@ -156,7 +176,6 @@ body {
 }
 
 /* Edit and Delete buttons */
-
 .btns {
     display: flex;
     flex-wrap: wrap;
@@ -178,6 +197,7 @@ body {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    border-radius: 0.75rem;
 }
 
 /* =========================
@@ -278,13 +298,12 @@ body {
 
 .review-card .card-body {
     min-width: 0;
+    padding: 1rem !important;
 }
 
-/* Keep rating stars within the card */
 .review-card .starability-result {
     display: block;
     max-width: 100%;
-    overflow: hidden;
 }
 
 /* =========================
@@ -293,8 +312,13 @@ body {
 
 @media (max-width: 767px) {
 
-    /* Navbar */
+    /* Main page spacing */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 
+    /* Navbar */
     .navbar {
         height: auto;
         min-height: 4.5rem;
@@ -322,7 +346,6 @@ body {
     }
 
     /* Search */
-
     .navbar-collapse form[role="search"] {
         display: flex;
         align-items: center;
@@ -345,7 +368,6 @@ body {
     }
 
     /* Categories */
-
     #filters {
         display: flex;
         flex-wrap: wrap;
@@ -366,22 +388,29 @@ body {
     }
 
     /* Tax toggle */
-
     .tax-toggle {
         margin: 1rem 0;
         max-width: 100%;
         font-size: 0.8rem;
     }
 
-    /* Listing images */
-
+    /* Listing details image */
     .show-img {
-        height: auto;
-        max-height: 350px;
+        height: 240px;
+        object-fit: cover;
+    }
+
+    /* Listing details spacing */
+    .show-card .card-body {
+        padding: 1rem 0.25rem !important;
+    }
+
+    .show-card h3,
+    .show-card h4 {
+        overflow-wrap: anywhere;
     }
 
     /* Map */
-
     #map {
         height: 280px;
         width: 100%;
@@ -389,14 +418,12 @@ body {
     }
 
     /* Edit and Delete */
-
     .btns {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
 
     /* Reviews */
-
     .review-card {
         width: 100%;
         flex: 0 0 100%;
@@ -404,9 +431,19 @@ body {
     }
 
     /* Footer */
-
     .f-info {
         gap: 0.75rem;
         padding: 1rem 0.5rem;
+    }
+}
+
+/* =========================
+   LARGE SCREENS
+========================= */
+
+@media (min-width: 1200px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 }
